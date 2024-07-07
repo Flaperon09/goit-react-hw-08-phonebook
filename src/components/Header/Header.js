@@ -1,15 +1,15 @@
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
-import { StyledLink, Navigation, MainWrapper } from "./Header.styled"
+import { Navigation, MainWrapper } from "./Header.styled"
 import { Loader } from "components/Loader";
+import UserMenu from "../../components/UserMenu/UserMenu";
 
-export default function Header () {
+export default function Header() {
+
     return (
         <header>
             <Navigation>
-                <StyledLink to="/">Home</StyledLink>
-                <StyledLink to="/register">Register</StyledLink>
-                <StyledLink to="/login">Login</StyledLink>
+                <UserMenu />
             </Navigation>
             <MainWrapper>
                 <Suspense fallback={<Loader />}>

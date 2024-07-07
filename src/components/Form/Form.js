@@ -13,13 +13,13 @@ export default function Form() {
     // === ХУКи состояния нового контакта
     const [id, setId] = useState(0);
     const [name, setName] = useState('');
-    const [phone, setPhone] = useState('');
+    const [number, setNumber] = useState('');
     
     // // === Объект состояния нового контакта
     const state = {
         id,
         name,
-        phone,
+        number,
     };
 
     // === Обновление state при вводе в <input>
@@ -30,7 +30,7 @@ export default function Form() {
                 setName(value);
                 break;
             case 'number':
-                setPhone(value);
+                setNumber(value);
                 break;
             default: return;
         };
@@ -58,7 +58,7 @@ export default function Form() {
     // === Очистка формы
     const reset = () => {
         setName('');
-        setPhone('');
+        setNumber('');
     };
             
         return (
@@ -81,7 +81,7 @@ export default function Form() {
                             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
                             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                             required
-                            value={phone} onChange={handleChange}
+                            value={number} onChange={handleChange}
                             />
                     </FormLabel>
                     <button type="submit">Add contact</button>

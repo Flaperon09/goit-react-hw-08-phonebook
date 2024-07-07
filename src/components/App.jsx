@@ -1,6 +1,12 @@
 import { GlobalStyle } from "../GlobalStyle";
-import { lazy } from "react";
+import { useEffect, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
+import { RestrictedRoute } from "./RestrictedRoute";
+import { PrivateRoute } from "./PrivateRoute";
+import { useAuth } from "hooks";
+import { useDispatch } from "react-redux";
+import { refreshUser } from "../redux/auth/operationsAuth";
+import { Loader } from "./Loader";
 
 // import Header from './Header';
 // import Home from '../pages/Home';
@@ -9,9 +15,6 @@ import { Routes, Route } from "react-router-dom";
 // import Contacts from '../pages/Contacts';
 // import NotFound from '../pages/NotFound';
 
-
-// import { useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
 // import { fetchContacts } from "../redux/operations";
 // import { getError, getIsLoading } from "../redux/selectors";
 
@@ -29,16 +32,19 @@ const NotFound = lazy(() => import('../pages/NotFound'));
 // import { Loader } from "./Loader"; 
 
 export default function App() {
-  // const dispatch = useDispatch();
-  // const isLoading = useSelector(getIsLoading);
-  // const error = useSelector(getError);
+
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
 
   // === Запрос на бекэнд при монтировании страницы
-  // useEffect(() => {
-  //   dispatch(fetchContacts());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
   
-  return (
+  return isRefreshing
+    ? 
+    <Loader />
+   : (
     <div>
 
       <GlobalStyle />
@@ -46,30 +52,13 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Header />}>
           <Route index element={<Home />} />
-          <Route path="/register" element={<Register />}/>
-          <Route path="/login" element={<Login />}/>
-          <Route path="/contacts" element={<Contacts />} />
+          <Route path="/register" element={<RestrictedRoute redirectTo="/contacts" component={<Register />} /> }/>
+          <Route path="/login" element={<RestrictedRoute redirectTo="/contacts" component={<Login />} />} />
+          <Route path="/contacts" element={<PrivateRoute redirectTo="/login" component={<Contacts />} />} />
           <Route path="*" element={<NotFound />} /> {/* Страница с сообщением об ошибке навигации */}
         </Route>
       </Routes>
 
     </div>
-
-    // <div>
-
-    //   <GlobalStyle />
-
-    //   <Section title="Phonebook">
-    //     <Form />
-    //   </Section>
-
-    //   <Section title="Contacts">
-    //     <Filter />
-    //     <ContactsList />
-    //     {/* Показывать загрузчик пока не получен ответ бекэнда */}
-    //     {isLoading && !error && <Loader />}
-    //   </Section>
-
-    // </div>
   )
 };

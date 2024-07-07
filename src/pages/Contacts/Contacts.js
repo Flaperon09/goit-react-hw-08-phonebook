@@ -1,31 +1,29 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { fetchTasks } from 'redux/tasks/operations';
+import { fetchContacts } from '../../redux/operations';
 
-import { getError, getIsLoading } from "../redux/selectors";
-import { Section } from './Section';
-import Form from './Form';
-import { ContactsList } from './ContactsList';
-import { Filter } from './Filter';
-import { Loader } from "./Loader"; 
+import { getError, getIsLoading } from "../../redux/selectors";
+import { Section } from '../../components/Section';
+import  Form  from '../../components/Form';
+import { ContactsList } from '../../components/ContactsList';
+import { Filter } from '../../components/Filter';
+import { Loader } from "../../components/Loader"; 
 
-export default function Tasks() {
-    //   const dispatch = useDispatch();
-    //   const isLoading = useSelector(selectLoading);
+export default function Contacts() {
     
     const dispatch = useDispatch();
     const isLoading = useSelector(getIsLoading);
     const error = useSelector(getError);
 
     useEffect(() => {
-        dispatch(fetchTasks());
+        dispatch(fetchContacts());
     }, [dispatch]);
 
     return (
         <div>
             <Helmet>
-                <title>Your tasks</title>
+                <title>Your contacts</title>
             </Helmet>
             <Section title="Phonebook">
                 <Form />

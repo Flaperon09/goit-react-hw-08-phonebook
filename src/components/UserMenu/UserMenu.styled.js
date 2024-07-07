@@ -15,16 +15,10 @@ export const StyledLink = styled(NavLink)`
     margin-right: 20px;
 `;
 
-export const Navigation = styled.div`
+export const UserMenuWrapper = styled.div`
+    width: 100%;
     display: flex;
-    background-color: white;
-    padding: 20px 20px 20px 40px;
-
-    border-bottom: solid 4px #cecece;
-`;
-
-export const MainWrapper = styled.main`
-    padding: 20px 40px 40px 40px;
+    justify-content: space-between;
 `;
 
 export const UserBar = styled.div`
