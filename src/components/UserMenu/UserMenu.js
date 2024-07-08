@@ -1,4 +1,7 @@
-import { StyledLink, UserBar, UserEmail, UserMenuWrapper } from "./UserMenu.styled";
+import {
+    StyledLink, UserBar, UserEmail, UserMenuWrapper,
+    Button
+ } from "./UserMenu.styled";
 import { useAuth } from "../../hooks";
 import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from "../../redux/auth/operationsAuth";
@@ -25,7 +28,9 @@ export default function UserMenu() {
                 ? 
                 <UserBar>
                     <UserEmail>{user.email}</UserEmail>
-                    <button type="button" onClick={() => dispatch(logOut())}>Logout</button>
+                    <Button type="button" onClick={() => dispatch(logOut())}>
+                        Logout
+                    </Button>
                 </UserBar>
                 :
                 <div>

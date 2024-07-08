@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { filterContact } from "../../redux/filterSlice";
-import { FilterTitle, FilterInput } from './Filter.styled';
+import { FilterTitle, FilterInput, FilterWrapper, FilterContainer } from './Filter.styled';
 
 export const Filter = ({value}) => {
     // === Получаем ссылку на функцию отправки экшенов
@@ -15,9 +15,11 @@ export const Filter = ({value}) => {
     };
 
     return (
-        <div>
-            <FilterTitle>Find contacts by name</FilterTitle>
-            <FilterInput type="text" name="filter" value={value} onChange={handleFilter}></FilterInput>
-        </div>
+        <FilterContainer>
+            <FilterWrapper>
+                <FilterTitle>Find contacts by name</FilterTitle>
+                <FilterInput type="text" name="filter" value={value} onChange={handleFilter}></FilterInput>
+            </FilterWrapper>
+        </FilterContainer>
     )
 };

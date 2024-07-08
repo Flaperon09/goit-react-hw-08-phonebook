@@ -19,8 +19,7 @@ export const Navigation = styled.div`
     display: flex;
     background-color: white;
     padding: 20px 20px 20px 40px;
-
-    border-bottom: solid 4px #cecece;
+    border-bottom: solid 2px grey;
 `;
 
 export const MainWrapper = styled.main`

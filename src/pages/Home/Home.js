@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <Container>
       <Title>
-        Your phonebook. Welcome page.
+        PHONEBOOK
       </Title>
     </Container>
   );

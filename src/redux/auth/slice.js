@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { register, logIn, logOut, refreshUser } from './operationsAuth';
 
+// === Начальная инициализация state состоняния пользователя
 const initialState = {
   user: { name: null, email: null },
   token: null,

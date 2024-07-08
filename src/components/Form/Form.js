@@ -2,8 +2,12 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { addContacts } from '../../redux/operations';
 import { getContacts } from '../../redux/selectors';
+import toast from 'react-hot-toast';
 
-import { FormData, FormLabel, FormLabelName, FormInputName } from './Form.styled';
+import {
+    FormData, FormLabel, FormLabelName, FormInputName,
+    ButtonWrapper, Button
+ } from './Form.styled';
 import shortid from 'shortid';
 
 export default function Form() {
@@ -47,7 +51,8 @@ export default function Form() {
         // Проверка наличия контакта
         if (items.find(option => option.name.toLowerCase() === state.name.toLowerCase())) {
             // Если контакт уже есть - выводим предупреждение
-            return alert(`${state.name} is already in contacts.`);
+            // return alert(`${state.name} is already in contacts.`);
+            return toast.error(`${state.name} is already in contacts.`)
         } else {
             // Если контакта нет - отправляем контакт на бекэнд
             dispatch(addContacts(state));
@@ -63,6 +68,7 @@ export default function Form() {
             
         return (
             <div>
+                
                 <FormData onSubmit={handleSubmit}>
                     <FormLabel>
                         <FormLabelName>Name</FormLabelName>
@@ -84,7 +90,9 @@ export default function Form() {
                             value={number} onChange={handleChange}
                             />
                     </FormLabel>
-                    <button type="submit">Add contact</button>
+                    <ButtonWrapper>
+                        <Button type="submit">Add contact</Button>
+                    </ButtonWrapper>
                 </FormData>
             </div>
         )

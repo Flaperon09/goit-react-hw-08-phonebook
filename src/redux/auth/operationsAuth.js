@@ -3,17 +3,17 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://connections-api.goit.global/';
 
-// Добавление токена авторизации
+// === Добавление токена авторизации
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-// Удаление токена авторизации
+// === Удаление токена авторизации
 const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
-/* Регистрация пользователя
+/* === Регистрация пользователя
  * POST @ /users/signup
  * body: { name, email, password }
  */
@@ -32,7 +32,7 @@ export const register = createAsyncThunk(
   }
 );
 
-/* Вход пользователя
+/* === Вход пользователя
  * POST @ /users/login
  * body: { email, password }
  */
@@ -51,7 +51,7 @@ export const logIn = createAsyncThunk(
   }
 );
 
-/* Выход пользователя
+/* === Выход пользователя
  * POST @ /users/logout
  * headers: Authorization: Bearer token
  */
@@ -66,7 +66,7 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   }
 });
 
-/* Сохранение входа при перезагрузке страницы
+/* === Сохранение входа при перезагрузке страницы
  * GET @ /users/current
  * headers: Authorization: Bearer token
  */

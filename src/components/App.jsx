@@ -7,16 +7,7 @@ import { useAuth } from "hooks";
 import { useDispatch } from "react-redux";
 import { refreshUser } from "../redux/auth/operationsAuth";
 import { Loader } from "./Loader";
-
-// import Header from './Header';
-// import Home from '../pages/Home';
-// import Register from '../pages/Register';
-// import Login from '../pages/Login';
-// import Contacts from '../pages/Contacts';
-// import NotFound from '../pages/NotFound';
-
-// import { fetchContacts } from "../redux/operations";
-// import { getError, getIsLoading } from "../redux/selectors";
+import { Toaster } from "react-hot-toast";
 
 const Header = lazy(() => import('./Header'));
 const Home = lazy(() => import('../pages/Home'));
@@ -24,12 +15,6 @@ const Register = lazy(() => import('../pages/Register'));
 const Login = lazy(() => import('../pages/Login'));
 const Contacts = lazy(() => import('../pages/Contacts'));
 const NotFound = lazy(() => import('../pages/NotFound'));
-
-// import { Section } from './Section';
-// import Form from './Form';
-// import { ContactsList } from './ContactsList';
-// import { Filter } from './Filter';
-// import { Loader } from "./Loader"; 
 
 export default function App() {
 
@@ -48,6 +33,8 @@ export default function App() {
     <div>
 
       <GlobalStyle />
+      
+      <Toaster position="top-center" />
       
       <Routes>
         <Route path="/" element={<Header />}>

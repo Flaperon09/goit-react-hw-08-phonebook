@@ -1,10 +1,12 @@
-import { FeedbackTitle } from './Section.styled';
+import { FeedbackTitle, SectionWrapper } from './Section.styled';
 
 export const Section = ({ title, children }) => {
     return (
-        <section>
-            <FeedbackTitle>{title}</FeedbackTitle>
-            {children}
-        </section>
+        <SectionWrapper>
+            <div>
+                <FeedbackTitle>{title}</FeedbackTitle>
+                {children}
+            </div>
+        </SectionWrapper>
     );
 };

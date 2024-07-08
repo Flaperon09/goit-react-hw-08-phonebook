@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Helmet } from 'react-helmet';
 import { fetchContacts } from '../../redux/operations';
 
 import { getError, getIsLoading } from "../../redux/selectors";
@@ -22,14 +21,11 @@ export default function Contacts() {
 
     return (
         <div>
-            <Helmet>
-                <title>Your contacts</title>
-            </Helmet>
-            <Section title="Phonebook">
+            <Section title="New contact">
                 <Form />
             </Section>
 
-            <Section title="Contacts">
+            <Section title="Your contacts">
                 <Filter />
                 <ContactsList />
                 {/* Показывать загрузчик пока не получен ответ бекэнда */}

@@ -31,3 +31,20 @@ export const UserEmail = styled.p`
     font-weight: 600;
     margin-right: 15px;
 `;
+
+export const Button = styled.button`
+    padding: 5px 10px 5px 10px;
+    background-color: #128ccc;
+        &:hover {
+            background-color: #107cb4;
+        };
+        &:active {
+            background-color: white;
+        }
+    border: 1px solid #107cb4;
+    border-radius: 4px;
+    color: white;
+        &:active {
+            color: #107cb4;
+        }
+`;
